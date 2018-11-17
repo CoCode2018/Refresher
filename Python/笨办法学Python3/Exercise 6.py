@@ -3,7 +3,8 @@
 Exercise 6: Strings and Text
     1.We'll cover that more later.
     2.Programmers love saving time at your expense by using annoyingly short and cryptic variable names
-
+    3.You are now at a point where you can try to break your code to see what happens.
+    4.
 
 while
     conj.而;虽然;在…期间;与…同时
@@ -31,20 +32,31 @@ hilarious
     adj.欢闹的;令人捧腹的;非常滑稽的;喜不自禁的
 evaluation 
     n.估价;<数>赋值;估计价值;[医学]诊断
+Go through
+    （法律、合同等正式）通过;用完;检查;完成
+put inside
+    v.把…送进监狱;放在里面
+devise
+    v.设计;想出;发明;策划
+    n.遗赠;遗赠的财产;遗赠的条款
+damage
+    vt.& vi.损害，毁坏
+    n.损害，损毁;赔偿金
+
 """
 
 types_of_people = 10
-x = "There are {type_of_people} types of people."
+x = f"There are {types_of_people} types of people."
 
 binary = "binary"
 do_not = "don't"
-y = "Those who konw {binary} and those who {do_not}."
+y = f"Those who konw {binary} and those who {do_not}."
 
 print(x)
 print(y)
 
-#print(f"I said: {x}")
-#print(f"I also said: '{y}'")
+print(f"I said: {x}")
+print(f"I also said: '{y}'")
 
 hilarious = False
 joke_evaluation = "Isn't that joke so funny?! {}"
@@ -55,3 +67,5 @@ w = "This is the left side of..."
 e = "a string with a right side."
 
 print(w +e)
+
+print("==========Study Drills==========")
