@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 """
 第17章 Python作用域(变量定义及查找的地方) && 参数传递(作为输入对象传递给函数的方式)
 
@@ -33,8 +35,49 @@
                 在要在函数内部对一个顶层的全局变量赋值，需要将此变量声明为global
                 在局部如果不创建同名全局变量，并且不修改全局变量，则可以正常使用全局变量
                 如果要在嵌套的def中使用外层的本地变量就需要使用nolocal语句来声明
-            
+三：变量名解析：LEGB原则
+    对于一个def语句：
+        1.变量名引用时查找变量的顺序：本地(L)、函数内(上一层def/lambda E)、全局(G)、内置(B)
+        2.默认变量的赋值会创建一个本地变量
+        3.全局声明和非本地的声明将赋值的变量名映射到模块文件内部的作用域        
+四：global语句
+    1.命名空间的声明
+    2.全局变量是位于模块文件内部的顶层的变量名
+    3.全局变量如果在函数内部被赋值的话，必须经过声明
+    4.全局变量如果在函数内部仅仅被引用而不改变的时候可以不经过声明直接引用
 
-        
 
 """
+
+# Global scope
+X = 99
+
+def func(Y):
+    # Local scope
+    Z = X + Y
+    return Z
+
+print(X)
+print(func(1))
+
+
+# Global
+X = 88
+def func1():
+    global  X
+    X = 99
+    return X
+
+print(X)
+func1()
+print(X)
+
+x = 'xxx'
+y, z = 1, 2
+def all_global():
+    global x
+    x = y + z
+    print(x)
+print(x)
+all_global()
+print(x)
