@@ -37,4 +37,70 @@
 
         
 
+
+
+六：嵌套函数
+    1.嵌套作用域(LEGB中的E：包括了任意嵌套函数内部的本地作用域)
+        查找规则：本地作用域、由内而外的嵌套函数的本地作用域、全局作用域、内置作用域
+        如果变量声明为global，则是创建或修改全局作用域
+        如果变量声明外nonlocal，则是创建或修改最近的嵌套函数的本地作用域
+    2.工厂函数(闭合)：尽管那个作用域或许不存在但是能够记住嵌套作用于的变量值的函数
+七：lambda表达式，会生成后面调用的一个新函数
 """
+
+
+# 嵌套函数及作用域
+# nonlocal
+
+X = 99
+def f1():
+    X = 88
+    def f2():
+        print(X)
+    f2()
+
+f1()
+
+# 被嵌套函数作为一个临时的函数, 它会记住嵌套函数中自己用到的变量等
+def f3():
+    x = 88
+    def f4():
+        print(x)
+    return f4
+result = f3()
+result()
+
+# 工厂函数
+def maker(N):
+    def action(X):
+        return X ** N
+    return action
+mAction = maker(2)
+print(mAction(2))
+print(mAction(3))
+
+mAction2 = maker(3)
+print(mAction2(2))
+print(mAction2(3))
+
+
+# 使用lambda表达式代替嵌套层的函数
+print("============")
+def func1():
+    x = 4
+    def func2(n):
+        return x ** n
+    return func2
+
+func2 = func1()
+print(func2(1))
+print(func2(2))
+
+print("===lambda==")
+def func3():
+    x = 4
+    func4 = (lambda n: x ** n)
+    return func4
+func4 = func3()
+print(func4(1))
+print(func4(2))
