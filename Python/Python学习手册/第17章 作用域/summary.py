@@ -70,7 +70,7 @@
 
 nonlocal语句：
     使用nonlocal声明的变量必须保证嵌套它的函数中定义过此变量，依然遵循LEGB；
-    使用global声明的变量也必须保证顶层全局变量中定义过此变量，依然遵循LEGB，但是会直接从顶层作用域中查找
+    使用global声明的变量不必保证顶层全局变量中定义过此变量，依然遵循LEGB，但是会直接从顶层作用域中查找
     加快引用，直接在上层嵌套的函数中查找变量，而不会在自己的本地作用域中查找
 
 """
@@ -145,11 +145,11 @@ print(mAction2(3))
 
 # 使用lambda表达式代替嵌套层的函数
 print("============")
-def func1():
-    x = 4
-    def func2(n):
-        return x ** n
-    return func2
+#def func1():
+#    x = 4
+#    def func2(n):
+#        return x ** n
+#    return func2
 
 func2 = func1()
 print(func2(1))
